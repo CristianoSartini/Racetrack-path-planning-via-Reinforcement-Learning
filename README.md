@@ -25,7 +25,7 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 ## 📊 Results
 
 ### Trajectory with the optimal policy
-Example of a path discovered by the agent:
+Examples of rollouts, the learned policy ensures a smooth path until the finish line, without hitting the track limits:
 
 ![Optimal Path](img/optimal_path.png)
 
@@ -55,8 +55,9 @@ This allows:
 ## 🤔 Why **on-policy control**
 Both **off-policy** (with Weighted Importance Sampling) and **on-policy** implementations were tested.  
 However:
-- Off-policy → high variance, very slow convergence.  
-- On-policy ε-soft → more stable, episodic, converges in reasonable time.  
+- Off-policy → high variance, very slow convergence. The agent can't reach the finish line even with 500k episodes. 
+- On-policy ε-soft → more stable, episodic, converges in reasonable time.
+On-poli
 
 👉 For this reason, the reported results are based on the **on-policy** version.
 
