@@ -24,7 +24,7 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 
 ## 📊 Results
 
-### ✅ Trajectory with the optimal policy
+### Trajectory with the optimal policy
 Example of a path discovered by the agent:
 
 ![Optimal Path](img/optimal_path.png)
