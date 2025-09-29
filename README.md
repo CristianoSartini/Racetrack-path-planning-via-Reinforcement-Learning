@@ -39,8 +39,19 @@ Examples of rollouts, with increasing number of training episodes.
 
 | ![](Images/5k_1000.png) | ![](Images/15k_1000.png) | ![](Images/20k_1000.png) |
 |:-----------------------:|:------------------------:|:------------------------:|
-| **Episode length:** 1000 <br> **Total reward:** -2916 | **Episode length:** 14 <br> **Total reward:** -13 | **Episode length**: 49 <br> **Total reward:** -102 |
+| 5000 episodes<br>**Episode length:** 1000 <br> **Total reward:** -2916 | 15000 episodes<br>**Episode length:** 14 <br> **Total reward:** -13 | 20000 episodes<br>**Episode length**: 49 <br> **Total reward:** -102 |
 
+---
+
+## ❓ How many episodes?
+
+Already after about **15,000 episodes** the learned policy produces an *acceptable trajectory*, close to the optimal one.  
+As shown in the **third trajectory (20,000 episodes)**, the policy does **not improve further**: it keeps an **ε-soft component**.
+
+Because of this persistent randomness, the policy may even produce **worse trajectories** despite longer training.  
+In fact, with on-policy Monte Carlo control, the best achievable solution is only within the class of **ε-soft policies**, not the truly optimal deterministic one.  
+
+To overcome this limit, one could use an **ε-decay schedule** (reducing exploration over time).
 
 
 ---
@@ -73,7 +84,7 @@ To ensure the coverage of every (state,action) pair during the action-values Q e
 - most of the time it acts greedy, accordingly to policy improvement task
 - with probability $\frac{\epsilon}{|A(s)|}$ it choses an action among all (exploratory behavior)
 
-The security of explortion has been provided through ε-soft policies, rather than the exploratory starts assumption, because of the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state
+Exploration has been guaranteed through ε-soft policies, rather than the exploratory starts assumption, because of the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state
 
 
 👉 For this reason, the reported results are based on the **on-policy** version.
