@@ -62,7 +62,7 @@ To assess the quality of the learned policies, we compared the **average return*
 between the learned policy and a purely random policy.
 
 | ![](Images/comparison_5k.png) | ![](Images/comparison_15k.png) | ![](Images/comparison_20k.png) |
-
+|:-----------------------:|:------------------------:|:------------------------:|
 - The bar shows the **mean return**  
 - The error bar indicates the **standard deviation** over 100 episodes  
 
