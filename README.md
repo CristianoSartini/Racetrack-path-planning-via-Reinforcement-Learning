@@ -39,7 +39,7 @@ Examples of rollouts, with increasing number of training episodes.
 
 | ![](Images/5k_1000.png) | ![](Images/15k_1000.png) | ![](Images/20k_1000.png) |
 |:-----------------------:|:------------------------:|:------------------------:|
-| *Episode length: 1000* <br> *Total reward: -2916* | *Episode length: 14* <br> *Total reward: -13* | *Episode length: 49* <br> *Total reward: -102* |
+| **Episode length:** 1000 <br> **Total reward:** -2916 | **Episode length:** 14 <br> **Total reward:** -13 | **Episode length**: 49 <br> **Total reward:** -102 |
 
 
 
