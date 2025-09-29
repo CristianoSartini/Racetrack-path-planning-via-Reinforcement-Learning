@@ -1,7 +1,7 @@
 # Racetrack-path-planning-via-Reinforcement-Learning
 When driving a race car around a turn, you want to go as fast as possible, but not so fast as to run off the track. Monte Carlo first-visit on policy control provides an effectively solution.
 
-## 📌 Description
+## Description
 In our simplified racetrack, the car is at one of a discrete set of grid positions, the cells in the diagram. The velocity is also discrete, a number of grid cells moved horizontally and vertically per time step. The actions are increments to the velocity components. Each may be changed by +1,-1,0 in each step (9 actions). Both velocity components are within [-5,+5], and they cannot both be zero except at the starting line. Each episode begins at one of the randomly selected start states with both velocity components zero, ending with the car crossing the finishing line. The rewards are -1 for each step until the car crosses the finish line, with an exceptional -10 reward for hitting the boundaries . If the car hits the track boundary, it is moved back to a random position on the starting line, both velocity components are reduced to zero, and the episode continues . To add some noise on the actuactors, with probability 0.1 at each time step the velocity increments are both zero, independently of the intended increments.
 
 <p align="center">
@@ -12,9 +12,9 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 
 ---
 
-## 🚀 Project Structure
+## Project Structure
 - `main.py` → main script (training, rollout, results).  
-- `env.py` → environment definition (dynamic transitions, episode generation, reset).  
+- `env.py` → environment definition (dynamics transitions, episode generation, reset).  
 - `track.py` → racetrack management (CSV loader of the map, gridmap visualization).  
 - `montecarlo_control.py` → control algorithm implementation (on/off policy versions).  
 - `tracks/` → racetracks in CSV format.  
@@ -22,19 +22,50 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 
 ---
 
-## 📊 Results
+## Results
 
 ### Trajectory with the optimal policy
-Examples of rollouts, the learned policy ensures a smooth path until the finish line, without hitting the track limits:
+Examples of rollouts, with increasing number of training episodes
 
-![Optimal Path](img/optimal_path.png)
+# Parameters
+- Discount Rate: $\gamma = 1.0$
+- Maximum length of each episode: $\N_steps = 1000$
+- Exploration rate of the target - behaviour policy: $\epsilon = 0.10$
 
-- **Total reward:** *replace_with_value*  
-- **Number of steps:** *replace_with_value*  
+<p align="center">
+  <figure style="display:inline-block; text-align:center; margin:10px">
+    <img src="5k_1000.png" alt="5000 episodes" width="200"/>
+    <figcaption>
+      <ul>
+      <li>**Episode length:** *1000*</li>
+      <li>**Total reward:** *-2916*</li>
+    </ul>
+    </figcaption>
+  </figure>
+  <figure style="display:inline-block; text-align:center; margin:10px">
+    <img src="15k_1000.png" alt="15000" width="200"/>
+     <figcaption>
+      <ul>
+      <li>**Episode length:** *14*</li>
+      <li>**Total reward:** *-13*</li>
+    </ul>
+    </figcaption>
+  </figure>
+  <figure style="display:inline-block; text-align:center; margin:10px">
+    <img src="20k_1000.png" alt="Descrizione 3" width="200"/>
+     <figcaption>
+      <ul>
+      <li>**Episode length:** *49*</li>
+      <li>**Total reward:** *-102*</li>
+    </ul>
+    </figcaption>
+  </figure>
+</p>
+
 
 ---
 
-### 📈 Performance comparison
+### Performance comparison
 Comparison of average returns under the optimal policy:
 
 ![Boxplot comparison](img/comparison_boxplot.png)
@@ -44,7 +75,7 @@ Comparison of average returns under the optimal policy:
 
 ---
 
-## 🔄 Reproducibility
+## Reproducibility
 To ensure reproducibility, a fixed **random seed** is used.  
 This allows:
 - Fair comparison between different experiments with the same initial conditions.  
@@ -52,12 +83,18 @@ This allows:
 
 ---
 
-## 🤔 Why **on-policy control**
+## Why **on-policy control**
 Both **off-policy** (with Weighted Importance Sampling) and **on-policy** implementations were tested.  
 However:
 - Off-policy → high variance, very slow convergence. The agent can't reach the finish line even with 500k episodes. 
 - On-policy ε-soft → more stable, episodic, converges in reasonable time.
-On-poli
+  
+To ensure the coverage of every (state,action) pair during the action-values Q evaluation, an ε-soft policy has been considered while acting with the environment:
+- most of the time it acts greedy, accordingly to policy improvement task
+- with probability $\frac{\epsilon}{|A(s)|}$ it choses an action among all (exploratory behavior)
+
+The security of explortion has been provided through ε-soft policies, rather than the exploratory starts assumption, because of the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state
+
 
 👉 For this reason, the reported results are based on the **on-policy** version.
 
