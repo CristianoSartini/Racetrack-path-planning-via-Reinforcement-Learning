@@ -27,7 +27,7 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 ### Trajectory with the optimal policy
 Examples of rollouts, with increasing number of training episodes
 
-# Parameters
+*Parameters*
 - Discount Rate: $\gamma = 1.0$
 - Maximum length of each episode: $\N_steps = 1000$
 - Exploration rate of the target - behaviour policy: $\epsilon = 0.10$
@@ -52,7 +52,7 @@ Examples of rollouts, with increasing number of training episodes
     </figcaption>
   </figure>
   <figure style="display:inline-block; text-align:center; margin:10px">
-    <img src="Images/20k_1000.png" alt="Descrizione 3" width="200"/>
+    <img src="Images/20k_1000.png" alt="15000" width="200"/>
      <figcaption>
       <ul>
       <li>**Episode length:** *49*</li>
