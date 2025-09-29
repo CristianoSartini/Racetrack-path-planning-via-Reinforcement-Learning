@@ -57,12 +57,16 @@ To overcome this limit, one could use an **ε-decay schedule** (reducing explora
 ---
 
 ### Performance comparison
-Comparison of average returns under the optimal policy:
 
-![Boxplot comparison](img/comparison_boxplot.png)
+To assess the quality of the learned policies, we compared the **average return** over 100 rollouts
+between the learned policy and a purely random policy.
 
-- Red line: mean  
-- Box: standard deviation  
+- The bar shows the **mean return**  
+- The error bar indicates the **standard deviation** over 100 episodes  
+
+As expected, the learned policy achieves significantly better and more stable performance than random behavior.
+However, due to the ε-soft nature of the policy, a residual variance remains: sometimes the car may follow a suboptimal trajectory.
+
 
 ---
 
