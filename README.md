@@ -5,7 +5,7 @@ When driving a race car around a turn, you want to go as fast as possible, but n
 In our simplified racetrack, the car is at one of a discrete set of grid positions, the cells in the diagram. The velocity is also discrete, a number of grid cells moved horizontally and vertically per time step. The actions are increments to the velocity components. Each may be changed by +1,-1,0 in each step (9 actions). Both velocity components are within [-5,+5], and they cannot both be zero except at the starting line. Each episode begins at one of the randomly selected start states with both velocity components zero, ending with the car crossing the finishing line. The rewards are -1 for each step until the car crosses the finish line, with an exceptional -10 reward for hitting the boundaries . If the car hits the track boundary, it is moved back to a random position on the starting line, both velocity components are reduced to zero, and the episode continues . To add some noise on the actuactors, with probability 0.1 at each time step the velocity increments are both zero, independently of the intended increments.
 
 <p align="center">
-  <img src="Images/right_turns.jpg" alt="A copule of right turns for the racetrack task" width="400"/>
+  <img src="Images/right_turns.jpg" alt="1000" width="400"/>
 </p>
 
 I compared **on-policy control** and **off-policy control**, and discuss the final choice.
@@ -25,16 +25,16 @@ I compared **on-policy control** and **off-policy control**, and discuss the fin
 ## Results
 
 ### Trajectory with the optimal policy
-Examples of rollouts, with increasing number of training episodes
+Examples of rollouts, with increasing number of training episodes.
 
-*Parameters*
+**Parameters**
 - Discount Rate: $\gamma = 1.0$
-- Maximum length of each episode: $\N_steps = 1000$
+- Maximum length of each episode: $\N_{steps} = 1000$
 - Exploration rate of the target - behaviour policy: $\epsilon = 0.10$
 
 <p align="center">
   <figure style="display:inline-block; text-align:center; margin:10px">
-    <img src="Images/5k_1000.png" alt="5000 episodes" width="200"/>
+    <img src="Images/5k_1000.png" alt="1000" width="200"/>
     <figcaption>
       <ul>
       <li>**Episode length:** *1000*</li>
@@ -43,7 +43,7 @@ Examples of rollouts, with increasing number of training episodes
     </figcaption>
   </figure>
   <figure style="display:inline-block; text-align:center; margin:10px">
-    <img src="Images/15k_1000.png" alt="15000" width="200"/>
+    <img src="Images/15k_1000.png" alt="1000" width="200"/>
      <figcaption>
       <ul>
       <li>**Episode length:** *14*</li>
@@ -52,7 +52,7 @@ Examples of rollouts, with increasing number of training episodes
     </figcaption>
   </figure>
   <figure style="display:inline-block; text-align:center; margin:10px">
-    <img src="Images/20k_1000.png" alt="15000" width="200"/>
+    <img src="Images/20k_1000.png" alt="1000" width="200"/>
      <figcaption>
       <ul>
       <li>**Episode length:** *49*</li>
