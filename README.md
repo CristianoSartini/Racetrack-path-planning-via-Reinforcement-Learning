@@ -13,7 +13,11 @@ In our simplified racetrack, the car is at one of a discrete set of grid positio
 
 
 
-I compared **on-policy control** and **off-policy control**, and discuss the final choice.
+In this project I applied **Monte Carlo control**, a reinforcement learning method that estimates 
+action values by averaging returns over many episodes and improves the policy accordingly.  
+I experimented with both the **on-policy** (ε-soft) and **off-policy** (importance sampling) versions, 
+and analyzed their differences before choosing the approach best suited to this task.
+
 
 ---
 
