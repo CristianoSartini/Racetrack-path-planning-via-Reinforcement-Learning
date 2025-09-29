@@ -63,6 +63,8 @@ between the learned policy and a purely random policy.
 
 | ![](Images/comparison_5k.png) | ![](Images/comparison_15k.png) | ![](Images/comparison_20k.png) |
 |:-----------------------:|:------------------------:|:------------------------:|
+| 5000 episodes | 15000 episodes | 20000 episodes |
+
 - The bar shows the **mean return**  
 - The error bar indicates the **standard deviation** over 100 episodes  
 
