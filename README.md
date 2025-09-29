@@ -90,7 +90,7 @@ To ensure the coverage of every (state,action) pair during the action-values Q e
 - most of the time it acts greedy, accordingly to policy improvement
 - with probability $\frac{\epsilon}{|A(s)|}$ it choses an action among all (exploratory behavior)
 
-Exploration has been guaranteed through ε-soft policies, rather than the exploratory starts assumption, because of the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state
+Exploration has been guaranteed through ε-soft policies, rather than the exploratory starts assumption. This is due to the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state.
 
 
 👉 For this reason, the reported results are based on the **on-policy** version.
