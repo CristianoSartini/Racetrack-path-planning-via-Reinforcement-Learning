@@ -87,7 +87,7 @@ However:
 - On-policy ε-soft → more stable, episodic, converges in reasonable time.
   
 To ensure the coverage of every (state,action) pair during the action-values Q evaluation, an ε-soft policy has been considered while acting with the environment:
-- most of the time it acts greedy, accordingly to policy improvement task
+- most of the time it acts greedy, accordingly to policy improvement
 - with probability $\frac{\epsilon}{|A(s)|}$ it choses an action among all (exploratory behavior)
 
 Exploration has been guaranteed through ε-soft policies, rather than the exploratory starts assumption, because of the task nature, which forces the car to start always at the starting line with zero speed; thus avoiding the possibility of starting from an arbitrarly state
