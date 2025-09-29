@@ -43,7 +43,7 @@ Examples of rollouts, with increasing number of training episodes.
 
 ---
 
-## ❓ How many episodes?
+## How many episodes?
 
 Already after about **15,000 episodes** the learned policy produces an *acceptable trajectory*, close to the optimal one.  
 As shown in the **third trajectory (20,000 episodes)**, the policy does **not improve further**: it keeps an **ε-soft component**.
@@ -61,20 +61,13 @@ To overcome this limit, one could use an **ε-decay schedule** (reducing explora
 To assess the quality of the learned policies, we compared the **average return** over 100 rollouts
 between the learned policy and a purely random policy.
 
+| ![](Images/comparison_5k.png) | ![](Images/comparison_15k.png) | ![](Images/comparison_20k.png) |
+
 - The bar shows the **mean return**  
 - The error bar indicates the **standard deviation** over 100 episodes  
 
 As expected, the learned policy achieves significantly better and more stable performance than random behavior.
 However, due to the ε-soft nature of the policy, a residual variance remains: sometimes the car may follow a suboptimal trajectory.
-
-
----
-
-## Reproducibility
-To ensure reproducibility, a fixed **random seed** is used.  
-This allows:
-- Fair comparison between different experiments with the same initial conditions.  
-- Clearer analysis of improvements.  
 
 ---
 
